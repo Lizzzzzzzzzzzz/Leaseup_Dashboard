@@ -161,9 +161,14 @@ with tab_market:
             mode='lines+markers', marker=dict(size=6, color='#f85149'),
             fill='tozeroy', fillcolor='rgba(248,81,73,0.1)'
         ))
-        fig2.update_layout(**dark_layout('Negative Rent Growth %', height=300),
-                           yaxis=dict(gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR, size=10),
-                                      ticksuffix='%', range=[0,100]))
+        fig2.update_layout(
+            plot_bgcolor=PLOT_BG, paper_bgcolor=PAPER_BG, font_color=FONT_COLOR,
+            height=300, margin=dict(l=10,r=10,t=40,b=10), showlegend=False,
+            title=dict(text='Negative Rent Growth %', font=dict(size=13, color=FONT_COLOR)),
+            xaxis=dict(gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR, size=10)),
+            yaxis=dict(gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR, size=10),
+                       ticksuffix='%', range=[0, 100])
+        )
         st.plotly_chart(fig2, use_container_width=True)
 
     # Season + Histogram
