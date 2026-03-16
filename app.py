@@ -25,7 +25,7 @@ div[data-testid="stMetric"] {
     border-radius: 12px; padding: 16px 20px;
     border-top: 3px solid #f0883e;
 }
-div[data-testid="stMetric"] label { color: #7d8590 !important; font-size: .75rem !important; }
+div[data-testid="stMetric"] label { color: #b0bac4 !important; font-size: .75rem !important; }
 div[data-testid="stMetric"] [data-testid="stMetricValue"] { color: #e6edf3 !important; }
 .stSelectbox > div > div { background: #161b22 !important; border-color: #21262d !important; }
 .stTextInput > div > div > input { background: #161b22 !important; border-color: #21262d !important; color: #e6edf3 !important; }
@@ -53,7 +53,7 @@ PLOT_BG = '#161b22'
 PAPER_BG = '#161b22'
 FONT_COLOR = '#e6edf3'
 GRID_COLOR = 'rgba(255,255,255,0.05)'
-TICK_COLOR = '#7d8590'
+TICK_COLOR = '#a8b3bc'
 
 def dark_layout(title='', height=350):
     return dict(
@@ -103,7 +103,7 @@ st.markdown("""
     <div style="width:40px;height:40px;background:#f0883e;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px">🏢</div>
     <div>
       <div style="font-family:'DM Serif Display';font-size:1.5rem;color:#e6edf3">Lease-Up Intelligence Dashboard</div>
-      <div style="font-size:.73rem;color:#7d8590">Property Analytics · Affinius Capital DS Assessment 2026 · Yining (Evelyn) Huang, UT Austin PhD</div>
+      <div style="font-size:.73rem;color:#a8b3bc">Property Analytics · Affinius Capital DS Assessment 2026 · Yining (Evelyn) Huang, UT Austin PhD</div>
     </div>
   </div>
 </div>
@@ -297,8 +297,8 @@ with tab_embed:
                 <div style="background:#161b22;border:1px solid #21262d;border-radius:8px;
                             padding:10px 14px;margin-bottom:8px;font-size:.8rem">
                   <strong style="color:#f0883e">{row['cluster']}</strong>
-                  <div style="color:#7d8590;margin-top:4px">n={int(row['count'])} · {lu} · {psf}</div>
-                  <div style="color:#7d8590">{neg}</div>
+                  <div style="color:#a8b3bc;margin-top:4px">n={int(row['count'])} · {lu} · {psf}</div>
+                  <div style="color:#a8b3bc">{neg}</div>
                 </div>""", unsafe_allow_html=True)
 
         # Cluster feature profiles
@@ -454,15 +454,15 @@ with tab_predict:
             st.markdown(f"""
             <div style="background:#161b22;border:1px solid #21262d;border-radius:12px;
                         padding:24px;margin-top:16px;text-align:center">
-              <div style="color:#7d8590;font-size:.8rem;margin-bottom:6px">Predicted Lease-Up Time</div>
+              <div style="color:#a8b3bc;font-size:.8rem;margin-bottom:6px">Predicted Lease-Up Time</div>
               <div style="font-family:'DM Serif Display';font-size:3.5rem;color:{color};line-height:1">
                 {pred_rounded} <span style="font-size:1.5rem">months</span>
               </div>
-              <div style="color:#7d8590;font-size:.82rem;margin-top:8px">
+              <div style="color:#a8b3bc;font-size:.82rem;margin-top:8px">
                 95% range: {pred_lo:.1f} – {pred_hi:.1f} months &nbsp;·&nbsp;
                 Market avg: {mu_hist} mo ({delta_str} vs avg)
               </div>
-              <div style="color:#7d8590;font-size:.75rem;margin-top:6px">
+              <div style="color:#a8b3bc;font-size:.75rem;margin-top:6px">
                 Model CV MAE: ±{model_info.get('cv_mae','?')} months &nbsp;·&nbsp;
                 Trained on {model_info.get('n_train','?')} properties
               </div>
@@ -551,7 +551,7 @@ with tab_similar:
                             padding:16px;margin:12px 0">
                   <div style="color:#f0883e;font-size:.72rem;font-family:'DM Mono';margin-bottom:6px">QUERY PROPERTY</div>
                   <div style="font-size:1rem;font-weight:600">{query_name}</div>
-                  <div style="color:#7d8590;font-size:.8rem;margin-top:4px">
+                  <div style="color:#a8b3bc;font-size:.8rem;margin-top:4px">
                     {q_meta.get('submarket','—')} · {q_meta.get('cluster','?')} ·
                     LU: {q_meta.get('lease_up_months','—')} mo ·
                     Rent/sqft: ${q_meta.get('rent_per_sqft','—')}
@@ -608,7 +608,7 @@ with tab_similar:
 st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown(
     '<div style="display:flex;justify-content:space-between;font-size:.7rem;'
-    'color:#7d8590;padding-bottom:20px;flex-wrap:wrap;gap:8px">'
+    'color:#a8b3bc;padding-bottom:20px;flex-wrap:wrap;gap:8px">'
     '<span>Affinius Capital DS Assessment 2026 &nbsp;·&nbsp; Yining (Evelyn) Huang, UT Austin PhD</span>'
     '<span>GenAI: sentence-transformers (all-MiniLM-L6-v2) · Isolation Forest · Random Forest · Cosine Similarity</span>'
     '</div>',
