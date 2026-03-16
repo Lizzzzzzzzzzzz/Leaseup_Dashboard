@@ -20,6 +20,26 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&family=DM+Mono&display=swap');
 html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
 .stApp { background: #0d1117; color: #e6edf3; }
+
+/* Force all labels, captions, helper text to be readable */
+label, .stSelectbox label, .stSlider label, .stNumberInput label,
+.stTextInput label, .stRadio label, p, .stCaption,
+[data-testid="stWidgetLabel"] p,
+[data-testid="stWidgetLabel"],
+[data-baseweb="select"] [class*="placeholder"],
+.stSlider [data-testid="stWidgetLabel"] p,
+div[class*="stSlider"] p,
+div[class*="stSelectbox"] p,
+div[class*="stNumberInput"] p {
+    color: #c9d1d9 !important;
+}
+/* Tab labels */
+button[data-baseweb="tab"] p,
+button[data-baseweb="tab"] { color: #c9d1d9 !important; }
+button[data-baseweb="tab"][aria-selected="true"] p,
+button[data-baseweb="tab"][aria-selected="true"] { color: #f0883e !important; }
+/* Selectbox placeholder and selected text */
+[data-baseweb="select"] div { color: #c9d1d9 !important; }
 div[data-testid="stMetric"] {
     background: #161b22; border: 1px solid #21262d;
     border-radius: 12px; padding: 16px 20px;
