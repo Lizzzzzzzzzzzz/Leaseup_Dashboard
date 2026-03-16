@@ -68,7 +68,8 @@ def dark_layout(title='', height=350):
 
 @st.cache_data
 def load_data():
-    with open("dashboard_data.json") as f:
+    base = os.path.dirname(os.path.abspath(__file__))
+    with open(os.path.join(base, "dashboard_data.json")) as f:
         d = json.load(f)
     df  = pd.DataFrame(d['properties'])
     yr  = pd.DataFrame(d['yr_summary'])
@@ -80,8 +81,10 @@ def load_data():
 
 @st.cache_resource
 def load_model():
-    if os.path.exists('leaseup_model.pkl'):
-        return joblib.load('leaseup_model.pkl')
+    base = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(base, 'leaseup_model.pkl')
+    if os.path.exists(path):
+        return joblib.load(path)
     return None
 
 df, yr_df, sea_df, cl_df, pca_df, ano_df, raw = load_data()
