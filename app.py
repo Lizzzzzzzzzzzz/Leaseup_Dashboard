@@ -148,8 +148,12 @@ with tab_market:
             mode='lines+markers', marker=dict(size=6, color='#f0883e'),
             fill='tozeroy', fillcolor='rgba(240,136,62,0.08)'
         ), secondary_y=False)
-        fig.update_layout(**dark_layout('Avg Lease-Up Time by Delivery Year', height=300),
-                          showlegend=True)
+        fig.update_layout(
+            plot_bgcolor=PLOT_BG, paper_bgcolor=PAPER_BG, font_color=FONT_COLOR,
+            height=300, margin=dict(l=10,r=10,t=40,b=10), showlegend=True,
+            title=dict(text='Avg Lease-Up Time by Delivery Year', font=dict(size=13, color=FONT_COLOR)),
+            legend=dict(bgcolor='rgba(0,0,0,0)', font=dict(color=TICK_COLOR,size=10))
+        )
         fig.update_yaxes(title_text="Avg Months", secondary_y=False,
                          gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR, size=10))
         fig.update_yaxes(title_text="# Properties", secondary_y=True,
@@ -186,7 +190,13 @@ with tab_market:
             text=s_data['avg_leaseup'].round(1), textposition='outside',
             textfont=dict(color=TICK_COLOR, size=11)
         ))
-        fig3.update_layout(**dark_layout('Delivery Season Effect', height=280))
+        fig3.update_layout(
+            plot_bgcolor=PLOT_BG, paper_bgcolor=PAPER_BG, font_color=FONT_COLOR,
+            height=280, margin=dict(l=10,r=10,t=40,b=10),
+            title=dict(text='Delivery Season Effect', font=dict(size=13, color=FONT_COLOR)),
+            xaxis=dict(gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR,size=10)),
+            yaxis=dict(gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR,size=10))
+        )
         st.plotly_chart(fig3, use_container_width=True)
 
     with c2:
@@ -199,7 +209,13 @@ with tab_market:
         fig4.add_vline(x=lu_vals.mean(), line_dash='dash', line_color='#f0883e',
                        annotation_text=f'Mean: {lu_vals.mean():.1f} mo',
                        annotation_font_color='#f0883e')
-        fig4.update_layout(**dark_layout('Lease-Up Distribution', height=280))
+        fig4.update_layout(
+            plot_bgcolor=PLOT_BG, paper_bgcolor=PAPER_BG, font_color=FONT_COLOR,
+            height=280, margin=dict(l=10,r=10,t=40,b=10),
+            title=dict(text='Lease-Up Distribution', font=dict(size=13, color=FONT_COLOR)),
+            xaxis=dict(gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR,size=10)),
+            yaxis=dict(gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR,size=10))
+        )
         st.plotly_chart(fig4, use_container_width=True)
 
     # Property table
@@ -299,8 +315,12 @@ with tab_embed:
                 marker_color=CLUSTER_COLORS[i % len(CLUSTER_COLORS)]
             ))
         fig_prof.update_layout(
-            **dark_layout('', height=280), barmode='group',
-            showlegend=True
+            plot_bgcolor=PLOT_BG, paper_bgcolor=PAPER_BG, font_color=FONT_COLOR,
+            height=280, margin=dict(l=10,r=10,t=20,b=10),
+            barmode='group', showlegend=True,
+            xaxis=dict(gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR,size=10)),
+            yaxis=dict(gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR,size=10)),
+            legend=dict(bgcolor='rgba(0,0,0,0)', font=dict(color=TICK_COLOR,size=10))
         )
         st.plotly_chart(fig_prof, use_container_width=True)
     else:
@@ -459,9 +479,12 @@ with tab_predict:
                     x=imp_df['Importance'], y=imp_df['Feature'],
                     orientation='h', marker_color='#f0883e', opacity=0.85
                 ))
-                fig_imp.update_layout(**dark_layout('', height=220),
-                                      xaxis=dict(gridcolor=GRID_COLOR,
-                                                 tickfont=dict(color=TICK_COLOR,size=10)))
+                fig_imp.update_layout(
+                    plot_bgcolor=PLOT_BG, paper_bgcolor=PAPER_BG, font_color=FONT_COLOR,
+                    height=220, margin=dict(l=10,r=10,t=20,b=10),
+                    xaxis=dict(gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR, size=10)),
+                    yaxis=dict(gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR, size=10))
+                )
                 st.plotly_chart(fig_imp, use_container_width=True)
     else:
         st.info("leaseup_model.pkl not found. Run prepare_dashboard_data.py first.")
@@ -558,10 +581,11 @@ with tab_similar:
                                   'Rent/sqft: $%{customdata[2]}<extra></extra>'
                 ))
                 fig_sim.update_layout(
-                    **dark_layout(f'Cosine Similarity to "{query_name}"',
-                                  height=max(280, n_results * 45)),
-                    xaxis=dict(gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR,size=10),
-                               range=[0, 1])
+                    plot_bgcolor=PLOT_BG, paper_bgcolor=PAPER_BG, font_color=FONT_COLOR,
+                    height=max(280, n_results * 45), margin=dict(l=10,r=10,t=50,b=10),
+                    title=dict(text=f'Cosine Similarity to "{query_name}"', font=dict(size=13, color=FONT_COLOR)),
+                    xaxis=dict(gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR,size=10), range=[0,1]),
+                    yaxis=dict(gridcolor=GRID_COLOR, tickfont=dict(color=TICK_COLOR,size=10))
                 )
                 st.plotly_chart(fig_sim, use_container_width=True)
 
